@@ -1,7 +1,7 @@
 let container = document.querySelector('#container')
 let totalMoney = document.createElement('h3')
 container.appendChild(totalMoney)
-let money = "1000"
+let money = parseFloat("1000")
 totalMoney.textContent = `Your total balance is: $${money}`
 function random(num) {
     return Math.floor(Math.random() * num)
@@ -27,14 +27,26 @@ allInBtn.addEventListener('click',allIn)
 
 
 let stake500 = function () {
+    
     let value = random(2)
     if (value == 0) {
-        parseFloat(money -= 500)
+        money -= 500
+        if (money < 0) {
+            totalMoney.classList.add('inDebt')
+        } else if (money > 0) {
+            totalMoney.classList.remove('inDebt')
+        }
         return totalMoney.textContent = `Your total balance is: $${money}`
     } else if (value == 1) {
-        money = money + 500
+        money += 500
+        if (money < 0) {
+            totalMoney.classList.add('inDebt')
+        } else if (money > 0) {
+            totalMoney.classList.remove('inDebt')
+        }
         return totalMoney.textContent = `Your total balance is: $${money}`
     }
+    
 }
 
 
