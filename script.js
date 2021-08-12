@@ -119,8 +119,11 @@ let checkDeath = function () {
         buyShark.disabled = true;
         alert('You have slain the computer.')
         money += 10000
-        totalMoney.textContent = `Your total balance is: $${money}`
-        
+        totalMoney.textContent = `Your total balance is: $${money}`   
+    } else if (yourhp < 30) {
+            fightContainer.classList.add('lowhp')
+    } else if (yourhp > 30) {
+        fightContainer.classList.remove('lowhp')
     }
 }
 let eatShark = document.createElement('button')
@@ -215,3 +218,10 @@ let startNewFight = function () {
     stats.textContent = "Good Luck"
 }
 newFight.addEventListener('click',startNewFight)
+
+let startOver = document.createElement('button')
+let resetContainer = document.querySelector('#resetContainer')
+resetContainer.appendChild(startOver)
+startOver.textContent = "Start over"
+let fightContainer = document.querySelector('#fightContainer')
+

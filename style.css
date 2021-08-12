@@ -6,3 +6,11 @@
     flex-direction: column;
     width: 20%;
 }
+#fightContainer {
+    background-color: lightgreen;
+    height: 170px;
+    border: solid black 5px;
+}
+.lowhp {
+    background-color: red !important;
+}
