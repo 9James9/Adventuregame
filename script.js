@@ -121,11 +121,16 @@ eatShark.textContent = "Eat shark"
 fightButtons.appendChild(eatShark)
 
 let shark = function () {
+    if (sharksLeft < 2) {
+        eatShark.disabled = true;
+        }
     yourhp += 20
+    sharksLeft -= 1
     if (yourhp > 99) {
         yourhp = 99
     }
     stats.textContent = "You ate a shark"
+    totalSharks.textContent = `You have ${sharksLeft} sharks left`
     computerAttack()
     checkDeath()
 }
@@ -156,5 +161,9 @@ bossBtn.textContent = "Fight a boss"
 fightButtons.appendChild(bossBtn)
 bossBtn.addEventListener('click', fightBoss)
 
-let totalSharks = document.createElement('p')
-totalSharks.textContent = parseFloat(5)
+let sharksLeft = parseFloat(5)
+let totalSharks = document.createElement('h5')
+totalSharks.textContent = `You have ${sharksLeft} sharks left`
+
+let fightTitle = document.querySelector('#fightTitle')
+fightTitle.appendChild(totalSharks)
