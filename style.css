@@ -1,3 +1,8 @@
 .inDebt {
     color: red;
 }
+#buttons {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
