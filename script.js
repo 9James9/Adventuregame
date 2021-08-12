@@ -123,6 +123,8 @@ fightButtons.appendChild(eatShark)
 let shark = function () {
     if (sharksLeft < 2) {
         eatShark.disabled = true;
+        } else if (sharksLeft > 0) {
+            eatShark.disabled = false;
         }
     yourhp += 20
     sharksLeft -= 1
@@ -167,3 +169,17 @@ totalSharks.textContent = `You have ${sharksLeft} sharks left`
 
 let fightTitle = document.querySelector('#fightTitle')
 fightTitle.appendChild(totalSharks)
+
+let boughtShark = function () {
+    money -= 500
+    totalMoney.textContent = `Your total balance is: $${money}`
+    sharksLeft += 1
+    totalSharks.textContent = `You have ${sharksLeft} sharks left`
+    if (eatShark.disabled = true) {
+        eatShark.disabled = false;
+    }
+}
+let buyShark = document.createElement('button')
+fightButtons.appendChild(buyShark)
+buyShark.textContent = "Buy shark for $500"
+buyShark.addEventListener('click', boughtShark)
