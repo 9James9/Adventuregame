@@ -90,26 +90,53 @@ let compStats = document.querySelector('#compstats')
 let attack = function () {
     let miss = random(5)
     if (miss == 1 || miss == 0) {
-         stats.textContent = "You missed your attack"
+        stats.textContent = "You missed your attack"
     } else if (miss > 1) {
         let damage = random(25)
         stats.textContent = `You hit a ${damage}`
         comphp -= damage
-         computerhp.textContent = `Computer's HP: ${comphp}`
+        computerhp.textContent = `Computer's HP: ${comphp}`
     }
+    computerAttack()
+    checkDeath()
+}
+
+let fightButtons = document.querySelector('#fightbuttons')
+let attackBtn = document.createElement('button')
+attackBtn.textContent = "Attack"
+fightButtons.appendChild(attackBtn)
+attackBtn.addEventListener('click', attack)
+
+let checkDeath = function () {
+    if (yourhp < 1) {
+        alert('Oh dear, you are dead.')
+    } else if (comphp < 1) {
+        alert('You have slain the computer.')
+        money += 10000
+        totalMoney.textContent = `Your total balance is: $${money}`
+    }
+}
+let eatShark = document.createElement('button')
+eatShark.textContent = "Eat shark"
+fightButtons.appendChild(eatShark)
+
+let shark = function () {
+    yourhp += 20
+    stats.textContent = "You ate a shark"
+    computerAttack()
+    checkDeath()
+}
+eatShark.addEventListener('click', shark)
+
+let computerAttack = function () {
     let compMiss = random(5)
-    if (compMiss == 1 || compMiss == 0) {
+    if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
         compStats.textContent = 'The computer missed its attack!'
-    } else if (compMiss > 1) {
+        playerhp.textContent = `Your HP is ${yourhp}`
+    } else if (compMiss > 2) {
         let compDamage = random(25)
         yourhp -= compDamage
         playerhp.textContent = `Your HP is ${yourhp}`
         compStats.textContent = `The computer hit a ${compDamage}`
     }
-  
 }
-let fightButtons = document.querySelector('#fightbuttons')
-let attackBtn = document.createElement('button')
-attackBtn.textContent = "Attack"
-fightButtons.appendChild(attackBtn)
-attackBtn.addEventListener('click',attack)
