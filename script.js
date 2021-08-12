@@ -111,9 +111,11 @@ let checkDeath = function () {
     if (yourhp < 1) {
         alert('Oh dear, you are dead.')
     } else if (comphp < 1) {
+        attackBtn.disabled = true;
         alert('You have slain the computer.')
         money += 10000
         totalMoney.textContent = `Your total balance is: $${money}`
+        
     }
 }
 let eatShark = document.createElement('button')
@@ -151,6 +153,7 @@ let computerAttack = function () {
     }
 }
 let fightBoss = function () {
+    attackBtn.disabled = false;
     comphp = parseFloat(300)
     yourhp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
@@ -193,6 +196,7 @@ newFight.textContent = "New Fight"
 fightButtons.appendChild(newFight)
 
 let startNewFight = function () {
+    attackBtn.disabled = false;
     comphp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
     playerhp.textContent = `Your HP is ${yourhp}`
