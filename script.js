@@ -85,18 +85,28 @@ let yourhp = parseFloat(99)
 computerhp.textContent = `Computer's HP: ${comphp}`
 playerhp.textContent = `Your HP is: ${yourhp}`
 let stats = document.querySelector('#fightstats')
+let compStats = document.querySelector('#compstats')
+
 let attack = function () {
     let miss = random(5)
     if (miss == 1 || miss == 0) {
-        return stats.textContent = "You missed your attack"
+         stats.textContent = "You missed your attack"
     } else if (miss > 1) {
         let damage = random(25)
         stats.textContent = `You hit a ${damage}`
         comphp -= damage
-        return computerhp.textContent = `Computer's HP: ${comphp}`
+         computerhp.textContent = `Computer's HP: ${comphp}`
     }
-    let value = random(25)
-
+    let compMiss = random(5)
+    if (compMiss == 1 || compMiss == 0) {
+        compStats.textContent = 'The computer missed its attack!'
+    } else if (compMiss > 1) {
+        let compDamage = random(25)
+        yourhp -= compDamage
+        playerhp.textContent = `Your HP is ${yourhp}`
+        compStats.textContent = `The computer hit a ${compDamage}`
+    }
+  
 }
 let fightButtons = document.querySelector('#fightbuttons')
 let attackBtn = document.createElement('button')
