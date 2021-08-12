@@ -223,5 +223,9 @@ let startOver = document.createElement('button')
 let resetContainer = document.querySelector('#resetContainer')
 resetContainer.appendChild(startOver)
 startOver.textContent = "Start over"
+startOver.addEventListener('click', () => {
+    location.reload()
+})
+
 let fightContainer = document.querySelector('#fightContainer')
 
