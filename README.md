@@ -1,0 +1,1 @@
+This was supposed to be a gambling game where you try and get as much money as possible through luck but I got bored of that and turned it into a little game where you can fight a monster for money. If you're low on sharks to heal you can try gambling your money to buy more!
