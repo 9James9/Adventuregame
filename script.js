@@ -122,6 +122,9 @@ fightButtons.appendChild(eatShark)
 
 let shark = function () {
     yourhp += 20
+    if (yourhp > 99) {
+        yourhp = 99
+    }
     stats.textContent = "You ate a shark"
     computerAttack()
     checkDeath()
@@ -140,3 +143,18 @@ let computerAttack = function () {
         compStats.textContent = `The computer hit a ${compDamage}`
     }
 }
+let fightBoss = function () {
+    comphp = parseFloat(300)
+    yourhp = parseFloat(99)
+    computerhp.textContent = `Computer's HP: ${comphp}`
+    playerhp.textContent = `Your HP is ${yourhp}`
+    compStats.textContent = ""
+    stats.textContent = "Good Luck"
+}
+let bossBtn = document.createElement('button')
+bossBtn.textContent = "Fight a boss"
+fightButtons.appendChild(bossBtn)
+bossBtn.addEventListener('click', fightBoss)
+
+let totalSharks = document.createElement('p')
+totalSharks.textContent = parseFloat(5)
