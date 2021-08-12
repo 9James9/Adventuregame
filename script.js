@@ -110,8 +110,13 @@ attackBtn.addEventListener('click', attack)
 let checkDeath = function () {
     if (yourhp < 1) {
         alert('Oh dear, you are dead.')
+        attackBtn.disabled = true;
+        eatShark.disabled = true;
+        buyShark.disabled = true;
     } else if (comphp < 1) {
         attackBtn.disabled = true;
+        eatShark.disabled = true;
+        buyShark.disabled = true;
         alert('You have slain the computer.')
         money += 10000
         totalMoney.textContent = `Your total balance is: $${money}`
@@ -154,6 +159,8 @@ let computerAttack = function () {
 }
 let fightBoss = function () {
     attackBtn.disabled = false;
+    eatShark.disabled = false;
+    buyShark.disabled = false;
     comphp = parseFloat(300)
     yourhp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
@@ -161,10 +168,7 @@ let fightBoss = function () {
     compStats.textContent = ""
     stats.textContent = "Boss Fight"
 }
-let bossBtn = document.createElement('button')
-bossBtn.textContent = "Fight a boss"
-fightButtons.appendChild(bossBtn)
-bossBtn.addEventListener('click', fightBoss)
+
 
 let sharksLeft = parseFloat(5)
 let totalSharks = document.createElement('h5')
@@ -191,12 +195,19 @@ fightButtons.appendChild(buyShark)
 buyShark.textContent = "Buy shark for $500"
 buyShark.addEventListener('click', boughtShark)
 
+let bossBtn = document.createElement('button')
+bossBtn.textContent = "Fight a boss"
+fightButtons.appendChild(bossBtn)
+bossBtn.addEventListener('click', fightBoss)
+
 let newFight = document.createElement('button')
 newFight.textContent = "New Fight"
 fightButtons.appendChild(newFight)
 
 let startNewFight = function () {
     attackBtn.disabled = false;
+    eatShark.disabled = false;
+    buyShark.disabled = false;
     comphp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
     playerhp.textContent = `Your HP is ${yourhp}`
