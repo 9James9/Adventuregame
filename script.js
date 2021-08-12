@@ -20,7 +20,27 @@ if (value == 0) {
 }
 let buttonContainer = document.querySelector('#buttons')
 let allInBtn = document.createElement('button')
+allInBtn.classList.add('allinbtn')
 buttonContainer.appendChild(allInBtn)
 allInBtn.textContent = "All in"
 allInBtn.addEventListener('click',allIn)
+
+
+let stake500 = function () {
+    let value = random(2)
+    if (value == 0) {
+        parseFloat(money -= 500)
+        return totalMoney.textContent = `Your total balance is: $${money}`
+    } else if (value == 1) {
+        money = money + 500
+        return totalMoney.textContent = `Your total balance is: $${money}`
+    }
+}
+
+
+let gamble500 = document.createElement('button')
+buttonContainer.appendChild(gamble500)
+gamble500.classList.add('gamble500')
+gamble500.textContent = "Gamble $500"
+gamble500.addEventListener('click',stake500)
 
