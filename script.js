@@ -200,3 +200,4 @@ let startNewFight = function () {
     stats.textContent = "Good Luck"
 }
 newFight.addEventListener('click',startNewFight)
+//
