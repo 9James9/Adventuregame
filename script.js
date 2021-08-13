@@ -145,6 +145,7 @@ let shark = function () {
     }
     stats.textContent = "You ate a shark"
     totalSharks.textContent = `You have ${sharksLeft} sharks left`
+    playerhp.textContent = `Your HP is: ${yourhp}`
     computerAttack()
     checkDeath()
 }
@@ -307,5 +308,4 @@ function iceBarrage () {
         checkDeath()
         return isFrozen = true;
     } 
-    // add checkDeath() to ice barrage, and fix glitch where sharks don't visibly update hp when eating while computer is frozen
 } 
