@@ -167,7 +167,7 @@ let computerAttack = function () {
         }
         
 
-    } else if (isFrozen == false) {
+    } else {
         let compMiss = random(5)
         if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
             compStats.textContent = 'The computer missed its attack!'
@@ -233,6 +233,7 @@ let startNewFight = function () {
     attackBtn.disabled = false;
     eatShark.disabled = false;
     buyShark.disabled = false;
+    isFrozen = false;
     comphp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
     playerhp.textContent = `Your HP is ${yourhp}`
@@ -279,6 +280,18 @@ function magic () {
 
 unlockedMagic.addEventListener('click',iceBarrage)
 function iceBarrage () {
+    //computer attack
+    let compMiss = random(5)
+        if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
+            compStats.textContent = 'The computer missed its attack!'
+            playerhp.textContent = `Your HP is ${yourhp}`
+        } else if (compMiss > 2) {
+            let compDamage = random(25)
+            yourhp -= compDamage
+            playerhp.textContent = `Your HP is ${yourhp}`
+            compStats.textContent = `The computer hit a ${compDamage}`
+        }
+    //computer attack
     let miss = random(10)
     if (miss == 1 || miss == 0) {
         stats.textContent = "Your Ice Barrage splashed"
@@ -287,6 +300,8 @@ function iceBarrage () {
         stats.textContent = `You hit a ${damage}`
         comphp -= damage
         computerhp.textContent = `Computer's HP: ${comphp}`
+        
         return isFrozen = true;
     } 
-}
+} 
+//need to add computer attack to ice barrage
