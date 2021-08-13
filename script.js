@@ -152,7 +152,7 @@ eatShark.addEventListener('click', shark)
 
 
 
-
+var isFrozen = typeof isFrozen == 'undefined' ? false: isFrozen; //fixes error where isFrozen isn't defined if you don't use ise barrage
 
 //calculates if the computer misses or not and then calculates damage if it hits
 //if ice barrage was casted, there is a 1/3 chance to unfreeze. If still frozen it skips computer's attack until unfrozen
@@ -169,7 +169,7 @@ let computerAttack = function () {
         }
         
 
-    } else {
+    } else if (isFrozen == false) {
         let compMiss = random(5)
         if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
             compStats.textContent = 'The computer missed its attack!'
@@ -307,5 +307,5 @@ function iceBarrage () {
         checkDeath()
         return isFrozen = true;
     } 
-    // todo: fix glitch where sharks don't visibly update hp when eating while computer is frozen
+    // add checkDeath() to ice barrage, and fix glitch where sharks don't visibly update hp when eating while computer is frozen
 } 
