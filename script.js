@@ -99,6 +99,11 @@ let attack = function () {
     }
     computerAttack()
     checkDeath()
+    if (computerKills > 5) { //checks if boss fight is available
+        bossBtn.disabled = false;
+    } else if (computerKills < 5) {
+        bossBtn.disabled = true;
+    }
 }
 
 let fightButtons = document.querySelector('#fightbuttons')
@@ -313,3 +318,4 @@ function iceBarrage () {
 } 
 let scoreContainer = document.querySelector('#scoreContainer')
 scoreContainer.textContent = `Your score is: ${computerKills}`
+
