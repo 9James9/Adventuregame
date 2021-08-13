@@ -3,7 +3,7 @@ let totalMoney = document.createElement('h3')
 container.appendChild(totalMoney)
 let money = parseFloat("1000")
 totalMoney.textContent = `Your total balance is: $${money}`
-
+let computerKills = 0 //for the score
 function random(num) {
     return Math.floor(Math.random() * num)
 }
@@ -121,6 +121,8 @@ let checkDeath = function () {
         unlockedMagic.disabled = true;
         alert('You have slain the computer.')
         money += 10000
+        computerKills += 1
+        scoreContainer.textContent = `Your score is: ${computerKills}` //scoring
         totalMoney.textContent = `Your total balance is: $${money}`   
     } else if (yourhp < 30) {
             fightContainer.classList.add('lowhp')
@@ -309,3 +311,5 @@ function iceBarrage () {
         return isFrozen = true;
     } 
 } 
+let scoreContainer = document.querySelector('#scoreContainer')
+scoreContainer.textContent = `Your score is: ${computerKills}`
