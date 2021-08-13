@@ -1,7 +1,7 @@
 let container = document.querySelector('#container')
 let totalMoney = document.createElement('h3')
 container.appendChild(totalMoney)
-let money = parseFloat("10000")
+let money = parseFloat("1000")
 totalMoney.textContent = `Your total balance is: $${money}`
 
 function random(num) {
@@ -113,10 +113,12 @@ let checkDeath = function () {
         attackBtn.disabled = true;
         eatShark.disabled = true;
         buyShark.disabled = true;
+        unlockedMagic.disabled = true;
     } else if (comphp < 1) {
         attackBtn.disabled = true;
         eatShark.disabled = true;
         buyShark.disabled = true;
+        unlockedMagic.disabled = true;
         alert('You have slain the computer.')
         money += 10000
         totalMoney.textContent = `Your total balance is: $${money}`   
@@ -186,6 +188,7 @@ let fightBoss = function () {
     attackBtn.disabled = false;
     eatShark.disabled = false;
     buyShark.disabled = false;
+    unlockedMagic.disabled = false;
     comphp = parseFloat(300)
     //yourhp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
@@ -233,6 +236,7 @@ let startNewFight = function () {
     attackBtn.disabled = false;
     eatShark.disabled = false;
     buyShark.disabled = false;
+    unlockedMagic.disabled = false;
     isFrozen = false;
     comphp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
@@ -268,7 +272,7 @@ unlockedMagic.style.display = "none"
 
 //when unlockMagic is clicked:
 function magic () {
-    if (money > 1000) {
+    if (money > 999) {
         unlockMagic.style.display = "none"
         unlockedMagic.style.display = ""
         money -= 1000
@@ -291,7 +295,7 @@ function iceBarrage () {
             playerhp.textContent = `Your HP is ${yourhp}`
             compStats.textContent = `The computer hit a ${compDamage}`
         }
-    //computer attack
+    //player attack
     let miss = random(10)
     if (miss == 1 || miss == 0) {
         stats.textContent = "Your Ice Barrage splashed"
@@ -300,8 +304,8 @@ function iceBarrage () {
         stats.textContent = `You hit a ${damage}`
         comphp -= damage
         computerhp.textContent = `Computer's HP: ${comphp}`
-        
+        checkDeath()
         return isFrozen = true;
     } 
+    // todo: fix glitch where sharks don't visibly update hp when eating while computer is frozen
 } 
-//need to add computer attack to ice barrage
