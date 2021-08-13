@@ -1,7 +1,7 @@
 let container = document.querySelector('#container')
 let totalMoney = document.createElement('h3')
 container.appendChild(totalMoney)
-let money = parseFloat("1000")
+let money = parseFloat("0")
 totalMoney.textContent = `Your total balance is: $${money}`
 let computerKills = 0 //for the score
 function random(num) {
@@ -120,7 +120,7 @@ let checkDeath = function () {
         buyShark.disabled = true;
         unlockedMagic.disabled = true;
         alert('You have slain the computer.')
-        money += 10000
+        money += (1000 * computerKills)
         computerKills += 1
         scoreContainer.textContent = `Your score is: ${computerKills}` //scoring
         totalMoney.textContent = `Your total balance is: $${money}`   
@@ -178,7 +178,7 @@ let computerAttack = function () {
             compStats.textContent = 'The computer missed its attack!'
             playerhp.textContent = `Your HP is ${yourhp}`
         } else if (compMiss > 2) {
-            let compDamage = random(25)
+            let compDamage = random(25+computerKills) //increase damage as score goes up
             yourhp -= compDamage
             playerhp.textContent = `Your HP is ${yourhp}`
             compStats.textContent = `The computer hit a ${compDamage}`
@@ -201,7 +201,7 @@ let fightBoss = function () {
 }
 
 
-let sharksLeft = parseFloat(5)
+let sharksLeft = parseFloat(2)
 let totalSharks = document.createElement('h5')
 totalSharks.textContent = `You have ${sharksLeft} sharks left`
 
