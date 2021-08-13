@@ -29,7 +29,7 @@ allInBtn.classList.add('allinbtn')
 buttonContainer.appendChild(allInBtn)
 allInBtn.textContent = "All in"
 allInBtn.addEventListener('click', allIn)
-
+// Checks if money is negative and applies or removes class
 checkDebt = function () {
     if (money < 0) {
         totalMoney.classList.add('inDebt')
@@ -129,7 +129,7 @@ let checkDeath = function () {
 let eatShark = document.createElement('button')
 eatShark.textContent = "Eat shark"
 fightButtons.appendChild(eatShark)
-
+//if sharks are available it will add 20hp instead of player attack and computer will still attack
 let shark = function () {
     if (sharksLeft < 2) {
         eatShark.disabled = true;
@@ -147,7 +147,7 @@ let shark = function () {
     checkDeath()
 }
 eatShark.addEventListener('click', shark)
-
+//calculates if the computer misses or not and then calculates damage if it hits
 let computerAttack = function () {
     let compMiss = random(5)
     if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
@@ -160,12 +160,13 @@ let computerAttack = function () {
         compStats.textContent = `The computer hit a ${compDamage}`
     }
 }
+//sets computer hp to 300 
 let fightBoss = function () {
     attackBtn.disabled = false;
     eatShark.disabled = false;
     buyShark.disabled = false;
     comphp = parseFloat(300)
-    yourhp = parseFloat(99)
+    //yourhp = parseFloat(99)
     computerhp.textContent = `Computer's HP: ${comphp}`
     playerhp.textContent = `Your HP is ${yourhp}`
     compStats.textContent = ""
@@ -206,7 +207,7 @@ bossBtn.addEventListener('click', fightBoss)
 let newFight = document.createElement('button')
 newFight.textContent = "New Fight"
 fightButtons.appendChild(newFight)
-
+//resets computer's hp and starts new fight
 let startNewFight = function () {
     attackBtn.disabled = false;
     eatShark.disabled = false;
@@ -229,3 +230,6 @@ startOver.addEventListener('click', () => {
 
 let fightContainer = document.querySelector('#fightContainer')
 
+//ideas: add magic, add new bosses and higher levels, new type of food, higher level and different weapons you can buy, 
+//add score and maybe a way to save highscores
+//add 10x 100x buttons with a small chance of winning
