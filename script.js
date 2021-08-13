@@ -1,7 +1,7 @@
 let container = document.querySelector('#container')
 let totalMoney = document.createElement('h3')
 container.appendChild(totalMoney)
-let money = parseFloat("1000")
+let money = parseFloat("10000")
 totalMoney.textContent = `Your total balance is: $${money}`
 
 function random(num) {
@@ -77,7 +77,7 @@ let stake1000 = function () {
     }
 }
 gamble1000.addEventListener('click', stake1000)
-
+//set default values for comphp and yourhp
 let computerhp = document.querySelector('#comphp')
 let playerhp = document.querySelector('#yourhp')
 let comphp = parseFloat(99)
@@ -106,7 +106,7 @@ let attackBtn = document.createElement('button')
 attackBtn.textContent = "Attack"
 fightButtons.appendChild(attackBtn)
 attackBtn.addEventListener('click', attack)
-
+//checks if comphp or yourhp is 0, and displays message and gives reward
 let checkDeath = function () {
     if (yourhp < 1) {
         alert('Oh dear, you are dead.')
@@ -147,18 +147,39 @@ let shark = function () {
     checkDeath()
 }
 eatShark.addEventListener('click', shark)
+
+
+
+
+
 //calculates if the computer misses or not and then calculates damage if it hits
+//if ice barrage was casted, there is a 1/3 chance to unfreeze. If still frozen it skips computer's attack until unfrozen
 let computerAttack = function () {
-    let compMiss = random(5)
-    if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
-        compStats.textContent = 'The computer missed its attack!'
-        playerhp.textContent = `Your HP is ${yourhp}`
-    } else if (compMiss > 2) {
-        let compDamage = random(25)
-        yourhp -= compDamage
-        playerhp.textContent = `Your HP is ${yourhp}`
-        compStats.textContent = `The computer hit a ${compDamage}`
+    if (isFrozen == true) {
+        let freezeTime = random(3)
+        if (freezeTime < 1) {
+            isFrozen = false;
+        } else if (freezeTime > 1) {
+            isFrozen = true;
+            
+            compStats.textContent = `The computer is still frozen and cannot attack!`
+            return freezeTime -= 1;
+        }
+        
+
+    } else if (isFrozen == false) {
+        let compMiss = random(5)
+        if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
+            compStats.textContent = 'The computer missed its attack!'
+            playerhp.textContent = `Your HP is ${yourhp}`
+        } else if (compMiss > 2) {
+            let compDamage = random(25)
+            yourhp -= compDamage
+            playerhp.textContent = `Your HP is ${yourhp}`
+            compStats.textContent = `The computer hit a ${compDamage}`
+        }
     }
+    
 }
 //sets computer hp to 300 
 let fightBoss = function () {
@@ -233,3 +254,39 @@ let fightContainer = document.querySelector('#fightContainer')
 //ideas: add magic, add new bosses and higher levels, new type of food, higher level and different weapons you can buy, 
 //add score and maybe a way to save highscores
 //add 10x 100x buttons with a small chance of winning
+let unlockMagic = document.createElement('button')
+unlockMagic.textContent = "Unlock Magic for $1,000"
+fightButtons.appendChild(unlockMagic)
+unlockMagic.addEventListener('click',magic)
+
+//hidden until unlock Magic is clicked
+unlockedMagic = document.createElement('button')
+unlockedMagic.textContent = "Cast Ice Barrage"
+fightButtons.appendChild(unlockedMagic)
+unlockedMagic.style.display = "none"
+
+//when unlockMagic is clicked:
+function magic () {
+    if (money > 1000) {
+        unlockMagic.style.display = "none"
+        unlockedMagic.style.display = ""
+        money -= 1000
+        totalMoney.textContent = `Your total balance is: $${money}`
+    }else if (money < 1000) {
+        alert(`You can't afford that!`)
+        }
+}
+
+unlockedMagic.addEventListener('click',iceBarrage)
+function iceBarrage () {
+    let miss = random(10)
+    if (miss == 1 || miss == 0) {
+        stats.textContent = "Your Ice Barrage splashed"
+    } else if (miss > 1) {
+        let damage = random(40)
+        stats.textContent = `You hit a ${damage}`
+        comphp -= damage
+        computerhp.textContent = `Computer's HP: ${comphp}`
+        return isFrozen = true;
+    } 
+}
