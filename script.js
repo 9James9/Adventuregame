@@ -99,11 +99,7 @@ let attack = function () {
     }
     computerAttack()
     checkDeath()
-    if (computerKills > 5) { //checks if boss fight is available
-        bossBtn.disabled = false;
-    } else if (computerKills < 5) {
-        bossBtn.disabled = true;
-    }
+    checkBoss()
 }
 
 let fightButtons = document.querySelector('#fightbuttons')
@@ -319,3 +315,35 @@ function iceBarrage () {
 let scoreContainer = document.querySelector('#scoreContainer')
 scoreContainer.textContent = `Your score is: ${computerKills}`
 
+function checkBoss () {
+    if (computerKills > 2) { //checks if boss fight is available
+        bossBtn.disabled = false;
+    } else if (computerKills < 2) {
+        bossBtn.disabled = true;
+    }
+}
+
+bossBtn.disabled = true;
+let healthPotion = function () {
+    if (money > 4999) {
+        money -= 5000
+        totalMoney.textContent = `Your total balance is: $${money}`
+        yourhp += 18
+        playerhp.textContent = `Your HP is ${yourhp}`
+        /*  //this code is my attempt to make the max health = 99 + computer kills. will remove comment when code works
+        if (yourhp + 18 < maxHealth) {
+            yourhp += 18
+            playerhp.textContent = `Your HP is ${yourhp}`
+        } else if (yourhp + 18 > maxHealth -1) {
+            yourhp = maxHealth
+            playerhp.textContent = `Your HP is ${yourhp}`
+        } */
+    } 
+    
+    else {alert(`You can't afford that!`)}
+    
+   }
+let healthPotionBtn = document.createElement('button')
+fightButtons.appendChild(healthPotionBtn)
+healthPotionBtn.textContent = "Use Health Potion for $5000"
+healthPotionBtn.addEventListener('click',healthPotion)
