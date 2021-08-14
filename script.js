@@ -14,12 +14,12 @@ function allIn() {
         console.log('you lose')
         money -= money
         checkDebt()
-        return totalMoney.textContent = `Your total balance is: $${money}`
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     } else if (value == 1) {
         console.log('you win')
         money *= 2
         checkDebt()
-        return totalMoney.textContent = `Your total balance is: $${money}`
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     }
 }
 let buttonContainer = document.querySelector('#buttons')
@@ -37,18 +37,33 @@ checkDebt = function () {
         totalMoney.classList.remove('inDebt')
     }
 }
-
+let halfInBtn = document.createElement('button')
+halfInBtn.textContent = "Half in"
+buttonContainer.appendChild(halfInBtn)
+function halfIn () {
+    let value = random(2)
+    if (value == 1) {
+        money += (money / 2)
+        //checkdebt()
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
+    } else if (value == 0) {
+        money -= (money /2)
+        //checkdebt()
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
+    }
+}
+halfInBtn.addEventListener('click',halfIn)
 let stake500 = function () {
     let value = random(2)
 
     if (value == 0) {
         money -= 500
         checkDebt()
-        return totalMoney.textContent = `Your total balance is: $${money}`
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     } else if (value == 1) {
         money += 500
         checkDebt()
-        return totalMoney.textContent = `Your total balance is: $${money}`
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     }
 
 }
@@ -69,11 +84,11 @@ let stake1000 = function () {
     if (value == 0) {
         money -= 1000
         checkDebt()
-        return totalMoney.textContent = `Your total balance is: $${money}`
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     } else if (value == 1) {
         money += 1000
         checkDebt()
-        return totalMoney.textContent = `Your total balance is: $${money}`
+        return totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     }
 }
 gamble1000.addEventListener('click', stake1000)
@@ -124,7 +139,7 @@ let checkDeath = function () {
         money += (1000 * computerKills)
         computerKills += 1
         scoreContainer.textContent = `Your score is: ${computerKills}` //scoring
-        totalMoney.textContent = `Your total balance is: $${money}`   
+        totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`   
     } else if (yourhp < 30) {
             fightContainer.classList.add('lowhp')
     } else if (yourhp > 30) {
@@ -212,7 +227,7 @@ fightTitle.appendChild(totalSharks)
 let boughtShark = function () {
     if (money >= 500) {
     money -= 500
-    totalMoney.textContent = `Your total balance is: $${money}`
+    totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     sharksLeft += 1
     totalSharks.textContent = `You have ${sharksLeft} sharks left`
     } else if (money < 500) {
@@ -280,7 +295,7 @@ function magic () {
         unlockMagic.style.display = "none"
         unlockedMagic.style.display = ""
         money -= 1000
-        totalMoney.textContent = `Your total balance is: $${money}`
+        totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
     }else if (money < 1000) {
         alert(`You can't afford that!`)
         }
@@ -327,7 +342,7 @@ bossBtn.disabled = true;
 let healthPotion = function () {
     if (money > 4999) {
         money -= 5000
-        totalMoney.textContent = `Your total balance is: $${money}`
+        totalMoney.textContent = `Your total balance is: $${money.toFixed(2)}`
         yourhp += 18
         playerhp.textContent = `Your HP is ${yourhp}`
         /*  //this code is my attempt to make the max health = 99 + computer kills. will remove comment when code works
