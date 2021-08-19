@@ -29,6 +29,14 @@ allInBtn.classList.add('allinbtn')
 buttonContainer.appendChild(allInBtn)
 allInBtn.textContent = "All in"
 allInBtn.addEventListener('click', allIn)
+let info = document.querySelector('#info')
+
+allInBtn.addEventListener('mouseover', () => {
+    info.textContent = `Gamble $${money} for a 50% chance to double it!`
+})
+allInBtn.addEventListener('mouseout', () => {
+    info.innerHTML = "<br>"
+})
 // Checks if money is negative and applies or removes class
 checkDebt = function () {
     if (money < 0) {
@@ -40,6 +48,13 @@ checkDebt = function () {
 let halfInBtn = document.createElement('button')
 halfInBtn.textContent = "Half in"
 buttonContainer.appendChild(halfInBtn)
+halfInBtn.classList.add('halfinbtn')
+halfInBtn.addEventListener('mouseover', () => {
+    info.textContent = `Gamble $${money} for a 50% to double it!`
+})
+halfInBtn.addEventListener('mouseout', () => {
+    info.innerHTML = "<br>"
+})
 function halfIn () {
     let value = random(2)
     if (value == 1) {
