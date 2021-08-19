@@ -4,7 +4,7 @@
 #buttons {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 200px;
 }
 #fightContainer {
     background-color: lightgreen;
@@ -29,10 +29,11 @@
 }
 #info {
     border: 5px solid black;
-    right: 50%;
-    width: 50%;
+    width: 30%;
     padding: 5px;
-    height: 50px
+    height: 250px;
+    position: absolute;
+    left: 350px
 }
 #fightbuttons button{
     padding: 15px;

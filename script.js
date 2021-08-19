@@ -185,7 +185,16 @@ let shark = function () {
 eatShark.addEventListener('click', shark)
 
 
+let unlockMagic = document.createElement('button')
+unlockMagic.textContent = "Unlock Magic for $1,000"
+fightButtons.appendChild(unlockMagic)
+unlockMagic.addEventListener('click',magic)
 
+//hidden until unlock Magic is clicked
+unlockedMagic = document.createElement('button')
+unlockedMagic.textContent = "Cast Ice Barrage"
+fightButtons.appendChild(unlockedMagic)
+unlockedMagic.style.display = "none"
 var isFrozen = typeof isFrozen == 'undefined' ? false: isFrozen; //fixes error where isFrozen isn't defined if you don't use ise barrage
 
 //calculates if the computer misses or not and then calculates damage if it hits
@@ -293,16 +302,7 @@ let fightContainer = document.querySelector('#fightContainer')
 //ideas: add magic, add new bosses and higher levels, new type of food, higher level and different weapons you can buy, 
 //add score and maybe a way to save highscores
 //add 10x 100x buttons with a small chance of winning
-let unlockMagic = document.createElement('button')
-unlockMagic.textContent = "Unlock Magic for $1,000"
-fightButtons.appendChild(unlockMagic)
-unlockMagic.addEventListener('click',magic)
 
-//hidden until unlock Magic is clicked
-unlockedMagic = document.createElement('button')
-unlockedMagic.textContent = "Cast Ice Barrage"
-fightButtons.appendChild(unlockedMagic)
-unlockedMagic.style.display = "none"
 
 //when unlockMagic is clicked:
 function magic () {
