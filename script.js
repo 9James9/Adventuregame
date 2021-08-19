@@ -35,7 +35,7 @@ allInBtn.addEventListener('mouseover', () => {
     info.textContent = `Gamble $${money} for a 50% chance to double it!`
 })
 allInBtn.addEventListener('mouseout', () => {
-    info.innerHTML = "<br>"
+    info.innerHTML = ""
 })
 // Checks if money is negative and applies or removes class
 checkDebt = function () {
@@ -53,7 +53,7 @@ halfInBtn.addEventListener('mouseover', () => {
     info.textContent = `Gamble $${money} for a 50% to double it!`
 })
 halfInBtn.addEventListener('mouseout', () => {
-    info.innerHTML = "<br>"
+    info.innerHTML = ""
 })
 function halfIn () {
     let value = random(2)

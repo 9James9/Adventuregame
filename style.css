@@ -32,4 +32,8 @@
     right: 50%;
     width: 50%;
     padding: 5px;
+    height: 50px
+}
+#fightbuttons button{
+    padding: 15px;
 }
