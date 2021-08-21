@@ -41,7 +41,7 @@ allInBtn.addEventListener('mouseout', () => {
 checkDebt = function () {
     if (money < 0) {
         totalMoney.classList.add('inDebt')
-    } else if (money > 0) {
+    } else if (money >= 0) {
         totalMoney.classList.remove('inDebt')
     }
 }
