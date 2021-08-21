@@ -324,7 +324,7 @@ function iceBarrage () {
             compStats.textContent = 'The computer missed its attack!'
             playerhp.textContent = `Your HP is ${yourhp}`
         } else if (compMiss > 2) {
-            let compDamage = random(25)
+            let compDamage = random(25+score)
             yourhp -= compDamage
             playerhp.textContent = `Your HP is ${yourhp}`
             compStats.textContent = `The computer hit a ${compDamage}`
