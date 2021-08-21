@@ -206,12 +206,9 @@ let computerAttack = function () {
             isFrozen = false;
         } else if (freezeTime > 1) {
             isFrozen = true;
-            
             compStats.textContent = `The computer is still frozen and cannot attack!`
             return freezeTime -= 1;
         }
-        
-
     } else if (isFrozen == false) {
         let compMiss = random(5)
         if (compMiss == 1 || compMiss == 0 || compMiss == 2) {
@@ -224,7 +221,6 @@ let computerAttack = function () {
             compStats.textContent = `The computer hit a ${compDamage}`
         }
     }
-    
 }
 //sets computer hp to 300 
 let fightBoss = function () {
@@ -324,7 +320,7 @@ function iceBarrage () {
             compStats.textContent = 'The computer missed its attack!'
             playerhp.textContent = `Your HP is ${yourhp}`
         } else if (compMiss > 2) {
-            let compDamage = random(25+score)
+            let compDamage = random(25+computerKills)
             yourhp -= compDamage
             playerhp.textContent = `Your HP is ${yourhp}`
             compStats.textContent = `The computer hit a ${compDamage}`
